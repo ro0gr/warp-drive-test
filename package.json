@@ -67,5 +67,12 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "@warp-drive/core": "5.8.1",
+    "@warp-drive/ember": "5.8.1",
+    "@warp-drive/json-api": "5.8.1",
+    "@warp-drive/legacy": "5.8.1",
+    "@warp-drive/utilities": "5.8.1"
   }
 }
