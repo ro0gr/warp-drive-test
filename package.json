@@ -11,41 +11,43 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "ember build --environment=production",
+    "build": "vite build",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel \"lint:!(fix)\"",
     "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*:fix",
     "lint:hbs": "ember-template-lint .",
     "lint:hbs:fix": "ember-template-lint . --fix",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
-    "start": "ember serve",
+    "start": "vite",
     "test": "npm-run-all lint test:*",
-    "test:ember": "ember test"
+    "test:ember": "vite build --mode development && ember test --path dist"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.26.9",
     "@ember/optional-features": "^2.0.0",
-    "@ember/test-helpers": "^2.6.0",
+    "@ember/string": "^4.0.0",
+    "@ember/test-helpers": "^4.0.0",
+    "@embroider/compat": "^4.0.3",
+    "@embroider/config-meta-loader": "^1.0.0",
+    "@embroider/core": "^4.0.3",
+    "@embroider/vite": "^1.1.1",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
+    "@rollup/plugin-babel": "^6.0.4",
     "babel-eslint": "^10.1.0",
-    "broccoli-asset-rev": "^3.0.0",
+    "babel-plugin-ember-template-compilation": "^2.3.0",
+    "decorator-transforms": "^2.3.0",
     "ember-auto-import": "^2.12.0",
-    "ember-cli": "~3.28.6",
-    "ember-cli-app-version": "^5.0.0",
+    "ember-cli": "~4.12.0",
     "ember-cli-babel": "^7.26.10",
-    "ember-cli-dependency-checker": "^3.2.0",
     "ember-cli-htmlbars": "^5.7.2",
-    "ember-cli-inject-live-reload": "^2.1.0",
-    "ember-cli-sri": "^2.1.1",
-    "ember-cli-terser": "^4.0.2",
     "ember-data": "~3.28.6",
     "ember-export-application-global": "^2.0.1",
-    "ember-fetch": "^8.1.1",
-    "ember-load-initializers": "^2.1.2",
+    "ember-load-initializers": "^3.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-page-title": "^6.2.2",
-    "ember-qunit": "^5.1.5",
-    "ember-resolver": "^8.0.3",
+    "ember-qunit": "^9.0.0",
+    "ember-resolver": "^13.0.0",
     "ember-source": "~3.28.8",
     "ember-template-lint": "^3.15.0",
     "ember-welcome-page": "^4.1.0",
@@ -55,12 +57,11 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-qunit": "^6.2.0",
-    "loader.js": "^4.7.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
     "qunit": "^2.17.2",
     "qunit-dom": "^1.6.0",
-    "webpack": "^5.104.1"
+    "vite": "^6.0.0"
   },
   "engines": {
     "node": "12.* || 14.* || >= 16"
@@ -74,5 +75,9 @@
     "@warp-drive/json-api": "5.8.1",
     "@warp-drive/legacy": "5.8.1",
     "@warp-drive/utilities": "5.8.1"
+  },
+  "exports": {
+    "./tests/*": "./tests/*",
+    "./*": "./app/*"
   }
 }
