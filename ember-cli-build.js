@@ -21,12 +21,12 @@ module.exports = function (defaults) {
   // along with the exports of each module as its value.
 
   const { Webpack } = require('@embroider/webpack');
-  
+
   return require('@embroider/compat').compatBuild(app, Webpack, {
     staticAddonTestSupportTrees: true,
-    staticAddonTrees: false,  // Disable static addon trees to avoid macro issues
+    staticAddonTrees: false, // Disable static addon trees to avoid macro issues
     staticHelpers: true,
     staticModifiers: true,
-    staticComponents: true
+    staticComponents: true,
   });
 };
